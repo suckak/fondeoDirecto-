@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 
-//import flowReducer from './flowReducer';
+import dataReducer from './dataReducer';
 
 const rootReducer = combineReducers({
-    //flow : flowReducer
+    data : dataReducer
 });
 
 export default rootReducer;
