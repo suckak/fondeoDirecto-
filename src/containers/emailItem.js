@@ -4,16 +4,19 @@ class EmailItem extends Component {
 
     render() {
         const email = this.props.email;
+        const unread = email.isReaded ? null : <span className="unread"></span>;
+
         return(
-            <div className="email">
-                <p className="email--title">
+            <div className="emailItem">
+                {unread}
+                <p className="emailItem--title">
                     <i className="fa fa-user-o" aria-hidden="true"></i>
                     {email.fromName}
                 </p>
-                <p className="email--subject">
+                <p className="emailItem--subject">
                     {email.subject}
                 </p>
-                <p className="email--preview">
+                <p className="emailItem--preview">
                     {email.body}
                 </p>
             </div>

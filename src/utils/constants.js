@@ -1,5 +1,6 @@
 export const actionTypes  = {
-    CHANGE_LIST : 'CHANGE_LIST'
+    CHANGE_LIST : 'CHANGE_LIST',
+    SET_ACTIVE_EMAIL : 'SET_ACTIVE_EMAIL'
 };
 
 export const emailLists = {

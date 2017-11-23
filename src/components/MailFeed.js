@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import {emailLists} from '../utils/constants';
 import EmailItem from '../containers/emailItem';
+import {setActiveEmail} from "../actions/index";
 
 class MailFeed extends Component {
+
+    setActiveEmail(id){
+        this.props.setActiveEmail(id);
+    }
 
     renderEmails(){
         let emails = [];
@@ -21,7 +27,7 @@ class MailFeed extends Component {
         }
 
         return (
-            emails.map((email,index) => <li key={index}>
+            emails.map((email,index) => <li key={index} onClick={()=>this.setActiveEmail(email.id)}>
                 <EmailItem email={email}/>
             </li>)
         );
@@ -43,4 +49,10 @@ function mapStateToProps(state){
     return state.data;
 }
 
-export default connect(mapStateToProps)(MailFeed);
+function mapDispatchToProps(dispatch){
+    return {
+        setActiveEmail : bindActionCreators(setActiveEmail,dispatch)
+    };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(MailFeed);
