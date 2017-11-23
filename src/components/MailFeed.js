@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import {emailLists} from '../utils/constants';
 
 class MailFeed extends Component {
 
-    renderMails(){
-        const mails = this.props.mails;
+    renderEmails(){
+        let emails = [];
+        switch (this.props.activeList){
+            case emailLists.inbox:
+                emails = this.props.inbox;
+                break;
+            case emailLists.trash:
+                emails = this.props.trash;
+                break;
+            case emailLists.spam:
+                emails = this.props.spam;
+                break;
+        }
 
         return (
-            mails.map((mail,index) => <li key={index}>{mail.subject}</li>)
+            emails.map((email,index) => <li key={index}>{email.subject}</li>)
         );
     }
 
@@ -14,7 +28,7 @@ class MailFeed extends Component {
         return(
             <div>
                 <ul>
-                    {this.renderMails()}
+                    {this.renderEmails()}
                 </ul>
             </div>
         );
@@ -22,5 +36,8 @@ class MailFeed extends Component {
     }
 }
 
+function mapStateToProps(state){
+    return state.data;
+}
 
-export default MailFeed;
+export default connect(mapStateToProps)(MailFeed);

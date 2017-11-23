@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import MailList from './mailList';
-import MailContent from './MailContent';
+import MailList from '../containers/mailList';
+import MailContent from './mailContent';
 
 class App extends Component {
 
