@@ -25,7 +25,6 @@ class MailFeed extends Component {
                 emails = this.props.spam;
                 break;
         }
-
         return (
             emails.map((email,index) => <li key={index} onClick={()=>this.setActiveEmail(email.id)}>
                 <EmailItem email={email}/>

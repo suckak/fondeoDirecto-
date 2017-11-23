@@ -37,6 +37,36 @@ const dataReducer = (state = INITIAL_STATE, action) => {
             };
             break;
 
+        case actionTypes.DELETE_EMAIL:
+            state.trash.push(action.payload);
+            return {
+                ...state,
+                inbox : state.inbox.filter(email => email.id !== action.payload.id),
+                activeEmail : null
+            };
+            break;
+
+        case actionTypes.MARK_AS_SPAM:
+            state.spam.push(action.payload);
+            return {
+                ...state,
+                inbox : state.inbox.filter(email => email.id !== action.payload.id),
+                activeEmail : null
+            };
+            break;
+
+        case actionTypes.UNREAD_EMAIL:
+            return {
+                ...state,
+                inbox : state.inbox.map(email =>{
+                    if(email.id === action.payload){
+                        email.isReaded = false;
+                    }
+                    return email;
+                })
+            };
+            break;
+
         default:
             return state;
     }

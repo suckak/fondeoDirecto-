@@ -1,4 +1,6 @@
 $blue: #4990E2;
+$emailActionsColor: #8B8B8B;
+$emailActionsSize: 19px;
 
 body{
   font-family: 'Helvetica' , sans-serif;
@@ -22,4 +24,20 @@ li{
   width: 10px;
   border-radius: 50%;
   background-color: $blue;
+}
+
+.emailActions{
+  float: right;
+}
+
+.emailActions i{
+  color: $emailActionsColor;
+  width: $emailActionsSize;
+  margin-right: $emailActionsSize;
+}
+
+.emailActions i:hover{
+  cursor: pointer;
+  color: $blue;
+  transition: color 0.3s ease;
 }

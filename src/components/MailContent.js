@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import EmailActions from '../containers/emailActions';
+import {deleteEmail,markAsSpam,unreadEmail} from "../actions/index";
 
 class MailContent extends Component {
 
     renderEmail(email){
         if(email){
+
+            const emailActions = {
+                delete : this.props.deleteEmail.bind(this,email),
+                markAsSpam : this.props.markAsSpam.bind(this,email),
+                unread : this.props.unreadEmail.bind(this,email.id)
+            };
+
             return(
                 <div>
                     <p className="emailContent--subject">
                         {email.subject}
+                        <EmailActions {...emailActions}/>
                     </p>
                     <div>
                         <div className="emailHead">
@@ -51,4 +63,12 @@ function mapStateToProps(state){
     };
 }
 
-export default connect(mapStateToProps)(MailContent);
+function mapDispatchToProps(dispatch){
+    return {
+        deleteEmail : bindActionCreators(deleteEmail,dispatch),
+        markAsSpam : bindActionCreators(markAsSpam,dispatch),
+        unreadEmail : bindActionCreators(unreadEmail,dispatch)
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(MailContent);
