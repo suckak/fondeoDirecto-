@@ -5,7 +5,7 @@ class MailContent extends Component {
 
     render() {
         return(
-            <div>
+            <div className="emailContent">
                 <h1>Content</h1>
             </div>
         );

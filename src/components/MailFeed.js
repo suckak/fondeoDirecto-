@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import {emailLists} from '../utils/constants';
+import EmailItem from '../containers/emailItem';
 
 class MailFeed extends Component {
 
@@ -20,7 +21,9 @@ class MailFeed extends Component {
         }
 
         return (
-            emails.map((email,index) => <li key={index}>{email.subject}</li>)
+            emails.map((email,index) => <li key={index}>
+                <EmailItem email={email}/>
+            </li>)
         );
     }
 
