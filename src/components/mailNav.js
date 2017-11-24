@@ -9,20 +9,35 @@ class MailNav extends Component {
 
     constructor(props){
         super(props);
+
+        this.isSelected = this.isSelected.bind(this);
     }
 
     changeList(id){
         this.props.changeList(id);
     }
 
+    isSelected(value){
+        return this.props.currentList === value ? 'emailNav--option emailNav--option__selected' : 'emailNav--option';
+    }
+
     render() {
         return(
             <div>
-                <nav>
+                <nav className="emailNav">
                     <ul>
-                        <li onClick={()=>this.changeList(emailLists.inbox)}>inbox</li>
-                        <li onClick={()=>this.changeList(emailLists.trash)}>trash</li>
-                        <li onClick={()=>this.changeList(emailLists.spam)}>spam</li>
+                        <li className={this.isSelected(emailLists.inbox)} onClick={()=>this.changeList(emailLists.inbox)}>
+                            <i className="fa fa-inbox" aria-hidden="true"></i>
+                            Inbox
+                        </li>
+                        <li className={this.isSelected(emailLists.trash)} onClick={()=>this.changeList(emailLists.trash)}>
+                            <i className="fa fa-trash-o" aria-hidden="true"></i>
+                            Trash
+                        </li>
+                        <li className={this.isSelected(emailLists.spam)} onClick={()=>this.changeList(emailLists.spam)}>
+                            <i className="fa fa-microchip" aria-hidden="true"></i>
+                            Spam
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -31,10 +46,16 @@ class MailNav extends Component {
     }
 }
 
+function mapStateToProps(state){
+    return {
+        currentList : state.data.activeList
+    };
+}
+
 function mapDispatchToProps(dispatch){
     return {
         changeList : bindActionCreators(changeList,dispatch)
     };
 }
 
-export default connect(null,mapDispatchToProps)(MailNav);
+export default connect(mapStateToProps,mapDispatchToProps)(MailNav);
