@@ -14,11 +14,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.6.1",
-    "sass-loader": "^6.0.6",
-    "webpack": "^1.15.0"
+
   },
   "dependencies": {
+    "node-sass": "^4.6.1",
+    "sass-loader": "^6.0.6",
+    "webpack": "^1.15.0",
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.2.1",
     "babel-loader": "^6.2.0",

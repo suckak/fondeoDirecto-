@@ -25,7 +25,6 @@ body{
   margin: 0;
   padding: 0;
   color: $textColor;
-  //background-image: url("../public/assets/MailApp.jpg");
 }
 
 li{
@@ -212,4 +211,8 @@ li{
   font-size: $contentDateFontSize;
   color: $emailActionsColor;
   float: right;
+}
+
+.emailContent--body{
+  font-size: $contentBodyFontSize;
 }

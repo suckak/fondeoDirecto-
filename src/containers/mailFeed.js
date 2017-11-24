@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import {emailLists} from '../utils/constants';
-import EmailItem from '../containers/emailItem';
+import EmailItem from '../components/emailItem';
 import {setActiveEmail,addEmails} from "../actions/index";
 
 class MailFeed extends Component {
@@ -23,7 +23,7 @@ class MailFeed extends Component {
             ];
             this.setState({counter:this.state.counter+2});
             this.props.addEmails(emailsToAdd);
-        },5000);
+        },90000);
     }
 
     componentWillUnmount(){

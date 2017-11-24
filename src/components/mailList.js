@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import MailNav from '../components/mailNav';
-import MailFeed from '../components/mailFeed';
+import MailNav from '../containers/mailNav';
+import MailFeed from '../containers/mailFeed';
 
 class MailList extends Component {
 

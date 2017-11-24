@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import EmailActions from '../containers/emailActions';
+import EmailActions from '../components/emailActions';
 import {deleteEmail,markAsSpam,unreadEmail} from "../actions/index";
 import {formatFullDate} from "../utils/utils";
 
@@ -36,7 +36,7 @@ class MailContent extends Component {
                             </p>
 
                         </div>
-                        <p>{email.body}</p>
+                        <p className="emailContent--body">{email.body}</p>
                     </div>
                 </div>
             );
