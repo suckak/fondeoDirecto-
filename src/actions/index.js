@@ -19,3 +19,7 @@ export const markAsSpam = (email) => {
 export const unreadEmail = (id) => {
     return { type : actionTypes.UNREAD_EMAIL, payload : id };
 };
+
+export const addEmails = (emails) => {
+    return { type : actionTypes.ADD_EMAILS, payload : emails };
+};

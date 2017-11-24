@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import EmailActions from '../containers/emailActions';
 import {deleteEmail,markAsSpam,unreadEmail} from "../actions/index";
+import {formatFullDate} from "../utils/utils";
 
 class MailContent extends Component {
 
@@ -22,17 +23,18 @@ class MailContent extends Component {
                         {email.subject}
                         <EmailActions {...emailActions}/>
                     </p>
-                    <div>
+                    <div className="emailBack">
                         <div className="emailHead">
                             <p className="emailHead--from">
                                 {email.fromName} &nbsp;
                                 <a href={`mailto:${email.from}`}>
                                     {`<${email.from}>`}
                                 </a>
+                                <span className="emailHead--date">
+                                {formatFullDate(email.date)}
+                            </span>
                             </p>
-                            <p className="emailHead--date">
-                                {email.date}
-                            </p>
+
                         </div>
                         <p>{email.body}</p>
                     </div>
@@ -40,7 +42,7 @@ class MailContent extends Component {
             );
         }else{
             return(
-                <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                <i className="fa fa-envelope-o envelope" aria-hidden="true"></i>
             );
         }
     }

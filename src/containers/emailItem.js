@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {formatDate} from '../utils/utils';
+import {formatSimpleDate} from '../utils/utils';
 
 class EmailItem extends Component {
 
@@ -33,7 +33,7 @@ class EmailItem extends Component {
                         {email.body}
                     </p>
                     <span className="EmailItem--date">
-                        {formatDate(email.date)}
+                        {formatSimpleDate(email.date)}
                     </span>
                 </div>
             </div>

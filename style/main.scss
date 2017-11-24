@@ -3,6 +3,8 @@ $emailActionsColor: #8B8B8B;
 $borderColor: #B5B5B5;
 $textColor: #333333;
 $emailSelectedBG: #F9F9F9;
+$contentBG: #F6F6F7;
+$envelopeColor: #ECECEE;
 
 $emailActionsSize: 19px;
 $feedWidth: 320px;
@@ -13,6 +15,10 @@ $transitionColor: color 0.3s ease;
 
 $emailListFontSize: 12px;
 $emailListFilterFontSize: 10px;
+$contentSubjectFontSize: 16px;
+$contentSenderFontSize: 16px;
+$contentBodyFontSize: 14px;
+$contentDateFontSize: 12px;
 
 body{
   font-family: 'Helvetica' , sans-serif;
@@ -164,5 +170,46 @@ li{
 }
 
 .emailContent{
+  position: relative;
+  height: 100vh;
+  background: $contentBG;
   overflow: hidden;
+  padding: 0 40px;
+}
+
+.envelope{
+  position: absolute;
+  left:42%;
+  top:42%;
+  color: $envelopeColor;
+  font-size: 9em;
+}
+
+.emailContent--subject{
+  margin-top: 20px;
+  font-size: $contentSubjectFontSize;
+  font-weight: bold;
+}
+
+.emailBack{
+  background: white;
+  border-radius: 10px;
+  border: 1px solid $borderColor;
+  height: 75vh;
+  padding: 40px 50px;
+}
+
+.emailHead--from{
+  margin-top: 0;
+  font-size: $contentSenderFontSize;
+}
+
+.emailHead--from a{
+  color: $blue;
+}
+
+.emailHead--date{
+  font-size: $contentDateFontSize;
+  color: $emailActionsColor;
+  float: right;
 }
