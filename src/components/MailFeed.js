@@ -27,7 +27,7 @@ class MailFeed extends Component {
         }
         return (
             emails.map((email,index) => <li key={index} onClick={()=>this.setActiveEmail(email.id)}>
-                <EmailItem email={email}/>
+                <EmailItem email={email} activeEmail={this.props.activeEmail}/>
             </li>)
         );
     }
@@ -35,7 +35,7 @@ class MailFeed extends Component {
     render() {
         return(
             <div>
-                <ul>
+                <ul className="emailFeed">
                     {this.renderEmails()}
                 </ul>
             </div>

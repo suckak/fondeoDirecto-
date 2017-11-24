@@ -1,18 +1,24 @@
 $blue: #4990E2;
 $emailActionsColor: #8B8B8B;
 $borderColor: #B5B5B5;
+$textColor: #333333;
+$emailSelectedBG: #F9F9F9;
 
 $emailActionsSize: 19px;
 $feedWidth: 320px;
 
-
+$transitionAll: all 0.3s ease;
 $transitionColor: color 0.3s ease;
-$emailListFontSize: 13px;
+
+
+$emailListFontSize: 12px;
+$emailListFilterFontSize: 10px;
 
 body{
   font-family: 'Helvetica' , sans-serif;
   margin: 0;
   padding: 0;
+  color: $textColor;
   //background-image: url("../public/assets/MailApp.jpg");
 }
 
@@ -21,20 +27,16 @@ li{
 }
 
 .emailList{
+  height: 100vh;
+  overflow: hidden;
   float: left;
   border-right: 1px solid $borderColor;
   width: $feedWidth;
+  display:flex;
+  flex-direction:column;
 }
 
 .emailContent{
-}
-
-.unread{
-  display: inline-block;
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
-  background-color: $blue;
 }
 
 .emailActions{
@@ -54,11 +56,16 @@ li{
 }
 
 .emailNav{
+  background-color: white;
+  position: absolute;
+  z-index: 1000;
+  width: 320px;
   border-bottom: 2px solid $borderColor;
   text-align: right;
 }
 
 .emailNav ul{
+  max-height: 100%;
   margin-top: 15px;
   margin-bottom: 15px;
 }
@@ -76,5 +83,86 @@ li{
 }
 
 .emailNav--option i{
-  margin-right: 2px;
+  margin-right: 3px;
+}
+
+.emailFeed{
+  margin: 0px;
+  padding: 0px;
+  margin-top: -50px;
+  padding-top: 100px;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.emailItem{
+  position: relative;
+  height: 65px;
+  padding: 12px 0 0 10px;
+  border-bottom: 1px solid $borderColor;
+  font-size: $emailListFontSize;
+  line-height: 16px;
+  border-left: 3px solid white;
+}
+
+.emailItem:hover,.emailItem__selected{
+  transition: $transitionAll;
+  border-left: 3px solid $blue;
+  background-color: $emailSelectedBG;
+}
+
+.unread,.unread__blank{
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: $blue;
+  vertical-align: top;
+  margin-top: 20px;
+}
+
+.unread__blank{
+  background-color: inherit;
+}
+
+.emailItem--right{
+  padding-left: 6px;
+  width: 274px;
+  display: inline-block;
+}
+
+.emailItem--title,.emailItem--subject,.emailItem--preview{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.emailItem--title{
+  margin-top: 0;
+  font-weight: bold;
+}
+
+.emailItem--title i{
+  margin-right: 5px;
+  font-size: 10px;
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+.emailItem--preview{
+  margin-bottom: 0;
+  color: $emailActionsColor;
+}
+
+.EmailItem--date{
+  color: $emailActionsColor;
+  font-size: $emailListFilterFontSize;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.emailContent{
+  overflow: hidden;
 }
